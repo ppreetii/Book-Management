@@ -15,6 +15,11 @@ app.use(helmet());
 app.use(bodyParser.json());
 
 app.use(`${API.BASE_URL}${API.BOOK}`, bookRoutes);
+app.get("/", (req,res,next)=>{
+  res.json({
+    message: "Welcome. We are on Home Page"
+  });
+});
 
 app.all("*", () => {
   throw new PageNotFound();
